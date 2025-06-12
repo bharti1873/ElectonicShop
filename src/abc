@@ -1,0 +1,157 @@
+import Navigation from './Navigation';
+import Godrej from './img/Godrej.avif';
+import wm from './img/wm1.png';
+import ac from './img/ac1.png';
+import tv from './img/tvnew.png';
+import './shop.css';
+import './Category/Refrigerator';
+import Footer from './Footer';
+import { useState, useEffect } from 'react';
+import axios from 'axios'; // ✅ Correct axios import
+
+
+const Refrigerator = () => {
+
+    const [products, setProducts] = useState([]);
+
+    useEffect(() => {
+        axios.get("http://localhost:4000/api/viewproducts")
+            .then((response) => {
+                if (response.status === 200) {
+                    setProducts(response.data);
+                }
+            })
+            .catch((error) => {
+                console.error("Error fetching products:", error);
+            });
+    }, []);
+
+    return (
+        <>
+            <Navigation />
+
+            <div className="container mt-4">
+                {/* Refrigeration */}
+                <h2 className="section-title">Refrigeration</h2>
+                <div className="row">
+                    {products.map((product, index) => (
+                        <div className="col-lg-3 col-md-6 col-sm-12 mb-4" key={index}>
+                            <div className="product-card">
+                                <img
+                                    src={`http://localhost:4000${product.image_url}`}
+                                    alt={product.name}
+                                    style={{ width: "100%", height: "auto" }}
+                                />
+                                <p>{product.name}</p>
+                                <p>Rs. {parseFloat(product.price).toLocaleString("en-IN")}/-</p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                {/* Washing Machine */}
+                <h2 className="section-title">Washing Machine</h2>
+                <div className="row">
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={wm} alt="Washing Machine" /></a>
+                            <p>LG 6.5 kg Inverter Fully Automatic Front Load</p>
+                            <p>Rs. 25,499/-</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={wm} alt="Washing Machine" /></a>
+                            <p>Samsung 7 kg Top Load Washing Machine</p>
+                            <p>Rs. 18,999/-</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={wm} alt="Washing Machine" /></a>
+                            <p>Whirlpool 7.5 kg 5 Star Inverter Washer</p>
+                            <p>Rs. 22,000/-</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={wm} alt="Washing Machine" /></a>
+                            <p>IFB 6.5 kg Fully Automatic Washing Machine</p>
+                            <p>Rs. 21,500/-</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Air Conditioner */}
+                <h2 className="section-title">Air Conditioner</h2>
+                <div className="row">
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={ac} alt="AC" /></a>
+                            <p>Voltas 1.5 Ton 3 Star Split AC</p>
+                            <p>Rs. 32,999/-</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={ac} alt="AC" /></a>
+                            <p>LG 1 Ton 5 Star Dual Inverter Split AC</p>
+                            <p>Rs. 34,499/-</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={ac} alt="AC" /></a>
+                            <p>Daikin 1.5 Ton 5 Star Inverter Split AC</p>
+                            <p>Rs. 38,500/-</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={ac} alt="AC" /></a>
+                            <p>Samsung 1.5 Ton 4 Star Inverter Split AC</p>
+                            <p>Rs. 36,400/-</p>
+                        </div>
+                    </div>
+                </div>
+
+                {/* Television */}
+                <h2 className="section-title">Television</h2>
+                <div className="row">
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={tv} alt="TV" /></a>
+                            <p>Sony 43 inch 4K Ultra HD Smart LED TV</p>
+                            <p>Rs. 38,900/-</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={tv} alt="TV" /></a>
+                            <p>Samsung 50 inch Crystal 4K Ultra HD Smart TV</p>
+                            <p>Rs. 44,990/-</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={tv} alt="TV" /></a>
+                            <p>LG 43 inch 4K UHD Smart LED TV</p>
+                            <p>Rs. 34,400/-</p>
+                        </div>
+                    </div>
+                    <div className="col-lg-3 col-md-6 col-sm-12">
+                        <div className="product-card">
+                            <a href="#"><img src={tv} alt="TV" /></a>
+                            <p>OnePlus 55 inch QLED 4K Smart TV</p>
+                            <p>Rs. 49,999/-</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <Footer />
+        </>
+    );
+};
+
+export default Refrigerator;

@@ -1,0 +1,18 @@
+/* Navigation.css */
+.navbar-brand {
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.navbar-nav .nav-link {
+  margin-right: 10px;
+}
+
+/* You can enhance the style if needed */
+.bg-warning {
+  background: linear-gradient(90deg, #ffe259, #ffa751);
+}
+
+.text-orange {
+  color: orange !important;
+}
