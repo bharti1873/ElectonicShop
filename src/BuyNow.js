@@ -10,7 +10,6 @@ const BuyNow = () => {
     const [quantity, setQuantity] = useState(1);
     const [userId, setUserId] = useState(null); // Assume from session/localStorage
 
-
     // useEffect(() => {
     //     if (id) {
     //         axios.get(`http://localhost:4000/api/getsingleproduct/${id}`)
